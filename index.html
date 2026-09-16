@@ -594,8 +594,47 @@
       .header-inner, .hero-inner, .content, .footer-inner { width: min(calc(100% - 32px), var(--content-width)); }
       .menu-label-text { display: none; }
       .menu-panel { left: 16px; width: calc(100vw - 32px); }
-      h1 { font-size: clamp(2.3rem, 11vw, 3rem); }
-      .hero-contact { display: grid; }
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr) 104px;
+        grid-template-rows: auto auto auto auto;
+        gap: 16px 14px;
+        padding-block: 44px 52px;
+      }
+      .hero-inner > div:first-child { display: contents; }
+      .eyebrow {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        margin-bottom: 2px;
+      }
+      h1 {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: center;
+        font-size: clamp(2.25rem, 10.5vw, 3rem);
+      }
+      .portrait {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+        width: 104px;
+        aspect-ratio: 1;
+        padding: 4px;
+        border-radius: 50%;
+        box-shadow: 8px 8px 0 var(--blue-pale);
+      }
+      .portrait-fallback { inset: 4px; border-radius: 50%; font-size: 2rem; }
+      .profile-photo { border-radius: 50%; object-position: center 24%; }
+      .hero-subtitle {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        margin-top: 8px;
+      }
+      .hero-contact {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        display: grid;
+        margin-top: 4px;
+      }
       .contact-link { overflow-wrap: anywhere; }
       .facts, .interest-list, .cv-card { grid-template-columns: 1fr; }
       .interest { min-height: 120px; }
@@ -681,7 +720,7 @@
         <div class="section-grid">
           <h2 class="section-title" id="about-title">About</h2>
           <div class="prose">
-            <p>Hi! I am Riccardo Biscotto, a PhD student in Economics and Finance at Bocconi University, enrolled in the Accounting curriculum.</p>
+            <p class="lead">Hi! I am Riccardo Biscotto, a PhD student in Economics and Finance at Bocconi University, enrolled in the Accounting curriculum.</p>
             <p>Before pursuing my PhD, I obtained a Master's degree in Accounting, Financial Management and Control from Bocconi University and a Bachelor's degree in Banking and Finance from the University of Milano-Bicocca.</p>
             <p>Outside academia, I am deeply passionate about marine life, travelling, and history.</p>
           </div>
@@ -692,7 +731,7 @@
         <div class="section-grid">
           <h2 class="section-title" id="research-title">Research</h2>
           <div class="research-note">
-            <p>I look forward to sharing my first research projects here!</p>
+            <p>I look forward to sharing my first research project here!</p>
           </div>
         </div>
       </section>
@@ -702,7 +741,7 @@
           <h2 class="section-title" id="cv-title">CV</h2>
           <div>
             <div class="cv-card">
-              <p>You can view or download my CV here.</p>
+              <p>You can view or download my CV below.</p>
               <div class="cv-actions">
                 <a class="button primary" href="CV_Riccardo_Biscotto.pdf" target="_blank" rel="noopener noreferrer">View CV <span aria-hidden="true">↗</span></a>
                 <a class="button" href="CV_Riccardo_Biscotto.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
