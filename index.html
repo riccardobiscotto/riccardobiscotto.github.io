@@ -13,7 +13,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
 
   <script>
     (() => {
@@ -34,7 +34,7 @@
       --navy-soft: #153451;
       --link-blue: #1f4e79;
       --blue-pale: #eaf0f5;
-      --accent: #4f7ea8;
+      --accent: #2f7ab8;
       --ink: #18212a;
       --muted: #5d6873;
       --line: #e2e7eb;
@@ -42,15 +42,15 @@
       --canvas: #f6f7f9;
       --header-height: 72px;
       --content-width: 1120px;
-      --display: "Bricolage Grotesque", "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      --sans: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       --shadow: 0 16px 40px rgba(10, 31, 55, .09);
     }
 
     html[data-theme="dark"] {
       color-scheme: dark;
       --link-blue: #91bce2;
-      --accent: #7fa9cc;
+      --accent: #5fa3d8;
       --blue-pale: #142a3d;
       --ink: #e7edf2;
       --muted: #aebac4;
@@ -166,8 +166,8 @@
     .wordmark {
       grid-column: 2;
       color: var(--navy);
-      font: 500 1.06rem var(--display);
-      letter-spacing: .01em;
+      font: 700 1.06rem var(--display);
+      letter-spacing: -.01em;
       text-decoration: none;
       white-space: nowrap;
     }
@@ -232,8 +232,8 @@
       padding: 14px 0;
       color: white;
       border-bottom: 1px solid rgba(255,255,255,.14);
-      font: 600 1.2rem var(--display);
-      letter-spacing: -.01em;
+      font: 700 1.25rem var(--display);
+      letter-spacing: -.02em;
       text-decoration: none;
       transition: padding-left .18s ease;
     }
@@ -296,14 +296,14 @@
     }
 
     .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--link-blue); }
-    h1, h2, h3 { font-family: var(--display); font-weight: 600; }
+    h1, h2, h3 { font-family: var(--display); font-weight: 700; }
 
     h1 {
       margin: 0;
       color: var(--ink);
-      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-      line-height: 1.06;
-      letter-spacing: -.02em;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -.03em;
     }
 
     .hero-subtitle {
@@ -580,25 +580,20 @@
       .menu-panel { left: 16px; width: calc(100vw - 32px); }
       .hero-inner {
         grid-template-columns: minmax(0, 1fr) 104px;
-        grid-template-rows: auto auto auto auto;
+        grid-template-rows: auto auto auto;
         gap: 16px 14px;
         padding-block: 44px 52px;
       }
       .hero-inner > div:first-child { display: contents; }
-      .eyebrow {
-        grid-column: 1 / -1;
-        grid-row: 1;
-        margin-bottom: 2px;
-      }
       h1 {
         grid-column: 1;
-        grid-row: 2;
+        grid-row: 1;
         align-self: center;
         font-size: clamp(2.15rem, 10vw, 2.8rem);
       }
       .portrait {
         grid-column: 2;
-        grid-row: 2;
+        grid-row: 1;
         align-self: center;
         width: 104px;
         aspect-ratio: 1;
@@ -610,12 +605,12 @@
       .profile-photo { border-radius: 50%; object-position: center 24%; }
       .hero-subtitle {
         grid-column: 1 / -1;
-        grid-row: 3;
+        grid-row: 2;
         margin-top: 8px;
       }
       .hero-contact {
         grid-column: 1 / -1;
-        grid-row: 4;
+        grid-row: 3;
         display: grid;
         margin-top: 4px;
       }
@@ -671,9 +666,8 @@
     <section class="hero" id="top" aria-labelledby="page-title">
       <div class="hero-inner">
         <div>
-          <p class="eyebrow">Bocconi University</p>
           <h1 id="page-title">Riccardo<br>Biscotto</h1>
-          <p class="hero-subtitle"><strong>PhD Student in Economics and Finance</strong><br>Accounting Curriculum</p>
+          <p class="hero-subtitle"><strong>PhD Student in Economics and Finance</strong><br>Bocconi University</p>
           <div class="hero-contact" aria-label="Contact links">
             <a class="contact-link" href="https://www.linkedin.com/in/riccardobiscotto/" target="_blank" rel="noopener noreferrer">
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -705,6 +699,7 @@
           <div class="prose">
             <p>I am a PhD Student in Economics and Finance at Bocconi University, enrolled in the Accounting curriculum.</p>
             <p>I hold a Master's degree in Accounting, Financial Management and Control from Bocconi University, and a Bachelor's degree in Banking and Finance from the University of Milano-Bicocca.</p>
+            <p>My research interests are in Corporate Reporting, Capital Market Outcomes and Financial Markets. </p>
             <p>Outside academia, I am deeply passionate about marine life, travel, and history.</p>
           </div>
         </div>
