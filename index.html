@@ -55,7 +55,7 @@
       --ink: #e7edf2;
       --muted: #aebac4;
       --line: #2b4052;
-      --paper: #10263a;
+      --paper: #0b1b2a;
       --canvas: #0b1b2a;
       --shadow: 0 16px 40px rgba(0, 0, 0, .28);
     }
@@ -76,7 +76,6 @@
       transition: color .2s ease, background-color .2s ease;
     }
 
-    body.menu-open { overflow: hidden; }
     a { color: var(--link-blue); text-underline-offset: .2em; }
     a:hover { color: var(--navy); }
     html[data-theme="dark"] a:hover { color: #c4ddf1; }
@@ -199,29 +198,26 @@
     .menu-panel {
       position: fixed;
       z-index: 990;
-      top: var(--header-height);
+      top: calc(var(--header-height) + 8px);
       left: max(20px, calc((100vw - var(--content-width)) / 2));
-      width: min(345px, calc(100vw - 40px));
-      padding: 32px;
+      width: min(300px, calc(100vw - 40px));
+      padding: 10px 24px;
       color: white;
-      background: var(--navy);
+      background: #1f4e79;
       border-radius: 14px;
-      box-shadow: 0 24px 55px rgba(10, 31, 55, .28);
+      box-shadow: 0 12px 36px rgba(10, 31, 55, .18);
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
+      transform: translateY(-6px);
       transition: opacity .2s ease, transform .2s ease, visibility .2s;
     }
 
-    .menu-panel.open { opacity: 1; visibility: visible; transform: none; }
-
-    .menu-kicker {
-      display: block;
-      margin-bottom: 14px;
-      color: #9db6cc;
-      font-size: .78rem;
-      font-weight: 600;
+    html[data-theme="dark"] .menu-panel {
+      background: #153451;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .3);
     }
+
+    .menu-panel.open { opacity: 1; visibility: visible; transform: none; }
 
     .menu-nav { display: grid; }
 
@@ -231,32 +227,26 @@
       align-items: center;
       padding: 14px 0;
       color: white;
-      border-bottom: 1px solid rgba(255,255,255,.14);
-      font: 700 1.25rem var(--display);
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      font: 700 1.2rem var(--display);
       letter-spacing: -.02em;
       text-decoration: none;
-      transition: padding-left .18s ease;
+      transition: padding-left .18s ease, color .18s ease;
     }
 
-    .menu-nav a:hover { padding-left: 6px; }
+    .menu-nav a:last-child { border-bottom: 0; }
+    .menu-nav a:hover { padding-left: 6px; color: #bcd8ef; }
 
     html[data-theme="dark"] .section-title,
     html[data-theme="dark"] .lead { color: #e7edf2; }
 
     html[data-theme="dark"] .section-title::before { background: #91bce2; }
 
-    .menu-note {
-      margin: 22px 0 0;
-      color: #9db6cc;
-      font-size: .85rem;
-      line-height: 1.55;
-    }
-
     .backdrop {
       position: fixed;
       z-index: 980;
       inset: var(--header-height) 0 0;
-      background: rgba(10, 31, 55, .22);
+      background: transparent;
       opacity: 0;
       visibility: hidden;
       transition: opacity .2s ease, visibility .2s;
@@ -273,6 +263,8 @@
         var(--paper);
       border-bottom: 1px solid var(--line);
     }
+
+    html[data-theme="dark"] .hero { background: var(--paper); }
 
     .hero-inner {
       position: relative;
@@ -655,7 +647,6 @@
 
   <div class="backdrop" aria-hidden="true"></div>
   <aside class="menu-panel" id="site-menu" aria-label="Site navigation" aria-hidden="true">
-    <span class="menu-kicker"></span>
     <nav class="menu-nav">
       <a href="#about">About</a>
       <a href="#research">Research</a>
@@ -758,7 +749,6 @@
         panel.setAttribute("aria-hidden", String(!open));
         panel.classList.toggle("open", open);
         backdrop.classList.toggle("open", open);
-        document.body.classList.toggle("menu-open", open);
         if (open) links[0].focus();
         if (!open && returnFocus) toggle.focus();
       }
