@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Riccardo Biscotto — PhD Student in Economics and Finance at Bocconi University.">
-  <meta name="theme-color" content="#0a1f37">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Riccardo Biscotto — Academic Website">
   <meta property="og:description" content="PhD Student in Economics and Finance at Bocconi University.">
   <meta property="og:type" content="website">
   <title>Riccardo Biscotto | Bocconi University</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a1f37'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='46' fill='white'%3ERB%3C/text%3E%3C/svg%3E">
 
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230a1f37'/%3E%3Ctext x='50' y='66' text-anchor='middle' font-family='Arial,sans-serif' font-weight='700' font-size='46' fill='white'%3ERB%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <script>
     (() => {
       try {
-        const savedTheme = localStorage.getItem("theme");
-        const systemTheme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-        document.documentElement.dataset.theme = savedTheme || systemTheme;
+        const saved = localStorage.getItem("theme");
+        const preferred = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        document.documentElement.dataset.theme = saved || preferred;
       } catch (_) {
         document.documentElement.dataset.theme = "light";
       }
@@ -29,328 +29,141 @@
 
   <style>
     :root {
-      /* Colours matched to the LaTeX CV */
       --navy: #0a1f37;
-      --navy-soft: #153451;
-      --link-blue: #1f4e79;
-      --blue-pale: #eaf0f5;
-      --accent: #2f7ab8;
-      --ink: #18212a;
-      --muted: #5d6873;
-      --line: #e2e7eb;
-      --paper: #fff;
-      --canvas: #f6f7f9;
-      --header-height: 72px;
-      --content-width: 1120px;
-      --display: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      --sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      --shadow: 0 16px 40px rgba(10, 31, 55, .09);
+      --blue: #1f4e79;
+      --blue-soft: #edf3f7;
+      --background: #ffffff;
+      --surface: #f7f8f9;
+      --text: #252a2f;
+      --heading: #0a1f37;
+      --muted: #68727b;
+      --line: #e4e8eb;
+      --focus: #75a8d2;
+      --content-width: 1040px;
+      --font: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     html[data-theme="dark"] {
       color-scheme: dark;
-      --link-blue: #91bce2;
-      --accent: #5fa3d8;
-      --blue-pale: #142a3d;
-      --ink: #e7edf2;
-      --muted: #aebac4;
-      --line: #2b4052;
-      --paper: #0b1b2a;
-      --canvas: #0b1b2a;
-      --shadow: 0 16px 40px rgba(0, 0, 0, .28);
+      --blue: #8db7da;
+      --blue-soft: #172a39;
+      --background: #11171d;
+      --surface: #182129;
+      --text: #e5e9ed;
+      --heading: #f0f4f7;
+      --muted: #a6b0b9;
+      --line: #2b3741;
+      --focus: #9fc5e3;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: calc(var(--header-height) + 24px);
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      color: var(--ink);
-      background: var(--canvas);
-      font: 18px/1.75 var(--sans);
+      color: var(--text);
+      background: var(--background);
+      font: 16px/1.75 var(--font);
       -webkit-font-smoothing: antialiased;
       transition: color .2s ease, background-color .2s ease;
     }
 
-    a { color: var(--link-blue); text-underline-offset: .2em; }
-    a:hover { color: var(--navy); }
-    html[data-theme="dark"] a:hover { color: #c4ddf1; }
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: .2em;
+    }
 
-    a:focus-visible, button:focus-visible, summary:focus-visible {
-      outline: 3px solid #8bb5d8;
+    a:hover { color: var(--heading); }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--focus);
       outline-offset: 3px;
     }
 
     .skip-link {
       position: fixed;
-      z-index: 1200;
-      top: 8px;
-      left: 8px;
+      z-index: 20;
+      top: 10px;
+      left: 10px;
       padding: 9px 14px;
-      color: var(--navy);
-      background: var(--paper);
-      border-radius: 6px;
+      color: var(--heading);
+      background: var(--background);
+      border: 1px solid var(--line);
+      border-radius: 5px;
       transform: translateY(-150%);
       transition: transform .18s ease;
     }
 
     .skip-link:focus { transform: translateY(0); }
 
-    .site-header {
-      position: sticky;
-      z-index: 1000;
-      top: 0;
-      height: var(--header-height);
-      color: var(--navy);
-      background: var(--paper);
-      border-bottom: 1px solid var(--line);
-      box-shadow: 0 2px 16px rgba(10, 31, 55, .05);
-    }
-
-    .header-inner, .hero-inner, .content, .footer-inner {
-      width: min(calc(100% - 40px), var(--content-width));
-      margin-inline: auto;
-    }
-
-    .header-inner {
-      height: 100%;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-    }
-
-    .menu-toggle {
-      justify-self: start;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      min-height: 44px;
-      padding: 0;
-      color: var(--navy);
-      background: transparent;
-      border: 0;
-      font: 600 .85rem var(--sans);
-      letter-spacing: .02em;
-      cursor: pointer;
-    }
-
-    .menu-icon {
-      position: relative;
-      width: 23px;
-      height: 18px;
-    }
-
-    .menu-icon::before, .menu-icon::after, .menu-icon span {
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 23px;
-      height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: .2s ease;
-    }
-
-    .menu-icon::before { top: 0; }
-    .menu-icon span { top: 8px; }
-    .menu-icon::after { top: 16px; }
-    .menu-toggle[aria-expanded="true"] .menu-icon::before { top: 8px; transform: rotate(45deg); }
-    .menu-toggle[aria-expanded="true"] .menu-icon span { opacity: 0; }
-    .menu-toggle[aria-expanded="true"] .menu-icon::after { top: 8px; transform: rotate(-45deg); }
-
-    .wordmark {
-      grid-column: 2;
-      color: var(--navy);
-      font: 700 1.06rem var(--display);
-      letter-spacing: -.01em;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
     .theme-toggle {
-      justify-self: end;
+      position: fixed;
+      z-index: 10;
+      top: 20px;
+      right: 22px;
       width: 42px;
       height: 42px;
       display: grid;
       place-items: center;
       padding: 0;
-      color: var(--navy);
-      background: var(--canvas);
+      color: var(--heading);
+      background: var(--background);
       border: 1px solid var(--line);
       border-radius: 50%;
       cursor: pointer;
-      transition: background .18s ease, transform .18s ease;
+      transition: color .18s ease, background .18s ease, border-color .18s ease;
     }
 
-    .theme-toggle:hover { background: var(--blue-pale); transform: rotate(8deg); }
-    .theme-toggle svg { width: 19px; height: 19px; }
+    .theme-toggle:hover {
+      color: var(--blue);
+      background: var(--blue-soft);
+      border-color: var(--blue);
+    }
+
+    .theme-toggle svg { width: 18px; height: 18px; }
     .sun-icon { display: none; }
     html[data-theme="dark"] .moon-icon { display: none; }
     html[data-theme="dark"] .sun-icon { display: block; }
-    html[data-theme="dark"] .menu-toggle,
-    html[data-theme="dark"] .wordmark,
-    html[data-theme="dark"] .theme-toggle { color: #e7edf2; }
 
-    .menu-panel {
-      position: fixed;
-      z-index: 990;
-      top: calc(var(--header-height) + 8px);
-      left: max(20px, calc((100vw - var(--content-width)) / 2));
-      width: min(300px, calc(100vw - 40px));
-      padding: 10px 24px;
-      color: white;
-      background: #1f4e79;
-      border-radius: 14px;
-      box-shadow: 0 12px 36px rgba(10, 31, 55, .18);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-6px);
-      transition: opacity .2s ease, transform .2s ease, visibility .2s;
-    }
-
-    html[data-theme="dark"] .menu-panel {
-      background: #153451;
-      box-shadow: 0 12px 36px rgba(0, 0, 0, .3);
-    }
-
-    .menu-panel.open { opacity: 1; visibility: visible; transform: none; }
-
-    .menu-nav { display: grid; }
-
-    .menu-nav a {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      color: white;
-      border-bottom: 1px solid rgba(255, 255, 255, .16);
-      font: 700 1.2rem var(--display);
-      letter-spacing: -.02em;
-      text-decoration: none;
-      transition: padding-left .18s ease, color .18s ease;
-    }
-
-    .menu-nav a:last-child { border-bottom: 0; }
-    .menu-nav a:hover { padding-left: 6px; color: #bcd8ef; }
-
-    html[data-theme="dark"] .section-title,
-    html[data-theme="dark"] .lead { color: #e7edf2; }
-
-    html[data-theme="dark"] .section-title::before { background: #91bce2; }
-
-    .backdrop {
-      position: fixed;
-      z-index: 980;
-      inset: var(--header-height) 0 0;
-      background: transparent;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .2s ease, visibility .2s;
-    }
-
-    .backdrop.open { opacity: 1; visibility: visible; }
-    main { overflow: hidden; }
-
-    .hero {
-      position: relative;
-      color: var(--ink);
-      background:
-        radial-gradient(circle at 82% 20%, var(--blue-pale), transparent 32%),
-        var(--paper);
-      border-bottom: 1px solid var(--line);
-    }
-
-    html[data-theme="dark"] .hero { background: var(--paper); }
-
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      min-height: 480px;
-      padding-block: 66px;
+    .page-shell {
+      width: min(calc(100% - 64px), var(--content-width));
+      margin: 0 auto;
+      padding: 72px 0 64px;
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(250px, .65fr);
-      gap: clamp(50px, 9vw, 120px);
-      align-items: center;
+      grid-template-columns: 310px minmax(0, 680px);
+      gap: 0;
+      align-items: stretch;
     }
 
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 18px;
-      color: var(--link-blue);
-      font-size: .82rem;
-      font-weight: 600;
+    .profile {
+      position: sticky;
+      top: 48px;
+      align-self: start;
+      padding-right: 28px;
     }
-
-    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--link-blue); }
-    h1, h2, h3 { font-family: var(--display); font-weight: 700; }
-
-    h1 {
-      margin: 0;
-      color: var(--ink);
-      font-size: clamp(2.6rem, 5vw, 4rem);
-      line-height: 1.02;
-      letter-spacing: -.03em;
-    }
-
-    .hero-subtitle {
-      margin: 26px 0 0;
-      color: var(--muted);
-      font-size: clamp(1.02rem, 2vw, 1.15rem);
-      line-height: 1.65;
-    }
-
-    .hero-subtitle strong { color: var(--ink); font-weight: 600; }
-    .hero-contact { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 28px; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 45px;
-      padding: 9px 18px;
-      color: var(--link-blue);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: .87rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: .18s ease;
-    }
-
-    .button:hover { color: white; background: var(--navy); border-color: var(--navy); transform: translateY(-2px); }
-    .button.primary { color: white; background: var(--navy); border-color: var(--navy); }
-    .button.primary:hover { background: var(--link-blue); border-color: var(--link-blue); }
-    html[data-theme="dark"] .button:hover { color: white; }
 
     .portrait {
       position: relative;
-      justify-self: end;
-      width: min(100%, 280px);
-      aspect-ratio: 4/5;
-      padding: 8px;
-      background: var(--paper);
+      width: 210px;
+      aspect-ratio: 4 / 5;
+      margin-bottom: 24px;
+      overflow: hidden;
+      background: var(--blue-soft);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      box-shadow: var(--shadow);
+      border-radius: 4px;
     }
 
     .portrait-fallback {
       position: absolute;
-      inset: 8px;
+      inset: 0;
       display: grid;
       place-items: center;
-      color: var(--link-blue);
-      background: var(--blue-pale);
-      border-radius: 8px;
-      font: 500 4.2rem var(--display);
+      color: var(--blue);
+      font-size: 2.4rem;
+      font-weight: 600;
     }
 
     .profile-photo {
@@ -360,260 +173,180 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      border-radius: 8px;
-      image-rendering: auto;
+      object-position: center 24%;
     }
 
-    .section {
-      padding-block: 88px;
-      scroll-margin-top: calc(var(--header-height) + 24px);
-    }
-
-    .section + .section { border-top: 1px solid var(--line); }
-
-    .section-grid {
+    .contact-list {
       display: grid;
-      grid-template-columns: minmax(170px, .42fr) minmax(0, 1.58fr);
-      gap: clamp(40px, 8vw, 105px);
-      align-items: start;
-    }
-
-    .section-title {
-      position: relative;
-      margin: 0;
-      padding-top: 16px;
-      color: var(--navy);
-      font-size: clamp(1.75rem, 3vw, 2.3rem);
-      line-height: 1.15;
-      letter-spacing: -.01em;
-    }
-
-    .section-title::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 28px;
-      height: 4px;
-      border-radius: 4px;
-      background: var(--accent);
-    }
-
-    .prose { max-width: 720px; font-size: 1.04rem; }
-    .prose p:first-child { margin-top: 0; }
-    .prose p:last-child { margin-bottom: 0; }
-
-    .lead {
-      color: var(--navy);
-      font: 500 1.28rem/1.6 var(--display);
+      gap: 12px;
+      margin: 28px 0 0;
+      padding: 22px 0 0;
+      border-top: 1px solid var(--line);
     }
 
     .contact-link {
+      min-width: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--muted);
+      font-size: .86rem;
+      line-height: 1.45;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    a.contact-link:hover { color: var(--blue); }
+    .contact-link[href^="mailto:"] {
+      white-space: nowrap;
+      overflow-wrap: normal;
+      font-size: .8rem;
+    }
+    .contact-link svg {
+      width: 17px;
+      height: 17px;
+      margin-top: 1px;
+      flex: 0 0 auto;
+      color: var(--blue);
+    }
+
+    main {
+      min-width: 0;
+      min-height: 400px;
+      padding-left: clamp(32px, 5vw, 64px);
+      border-left: 1px solid var(--line);
+    }
+
+    .welcome-title {
+      margin: 0 0 24px;
+      color: var(--heading);
+      font-size: clamp(1.6rem, 3vw, 2rem);
+      line-height: 1.3;
+      letter-spacing: -.025em;
+      font-weight: 600;
+    }
+
+    .section {
+      padding: 0 0 58px;
+      margin-bottom: 54px;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 28px;
+    }
+
+    .section:last-of-type {
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .section-kicker {
+      margin: 0 0 12px;
+      color: var(--blue);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 0 0 24px;
+      color: var(--heading);
+      font-size: clamp(1.75rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      letter-spacing: -.035em;
+    }
+
+    .prose {
+      max-width: 660px;
+      font-size: 1.02rem;
+    }
+
+    .prose p { margin: 0 0 1.15em; }
+    .prose p:last-child { margin-bottom: 0; }
+
+    .research-line {
+      margin: 0;
+      padding-left: 18px;
+      border-left: 3px solid var(--blue);
+      color: var(--text);
+      font-size: 1.04rem;
+    }
+
+    .cv-link {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      min-height: 44px;
-      padding: 9px 15px;
-      color: var(--navy);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      font-size: .89rem;
-      font-weight: 500;
+      gap: 9px;
+      margin-top: 2px;
+      padding: 10px 0;
+      color: var(--blue);
+      font-weight: 600;
       text-decoration: none;
-      transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+      border-bottom: 1px solid var(--blue);
     }
 
-    .contact-link:hover {
-      color: var(--link-blue);
-      border-color: var(--link-blue);
-      box-shadow: 0 8px 20px rgba(10,31,55,.07);
-      transform: translateY(-2px);
+    .cv-link span {
+      transition: transform .18s ease;
     }
 
-    .contact-link svg { width: 19px; height: 19px; flex: 0 0 auto; }
-    html[data-theme="dark"] .contact-link { color: #e7edf2; }
-    html[data-theme="dark"] .contact-link:hover { color: #bcd8ef; }
+    .cv-link:hover span { transform: translate(3px, -2px); }
 
-    .facts {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 32px 0 0;
-    }
-
-    .fact { padding: 18px 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; }
-    .fact dt {
-      margin-bottom: 4px;
+    .site-footer {
+      padding-top: 28px;
       color: var(--muted);
+      border-top: 1px solid var(--line);
       font-size: .78rem;
-      font-weight: 600;
-    }
-    .fact dd { margin: 0; color: var(--navy); font: 500 1rem/1.45 var(--display); }
-
-    .interest-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 34px;
     }
 
-    .interest {
-      min-height: 120px;
-      padding: 20px 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-    }
+    .site-footer p { margin: 0; }
 
-    .interest h3 { margin: 0; color: var(--navy); font-size: 1.06rem; line-height: 1.35; font-weight: 500; }
-
-    .research-interests { margin-bottom: 24px; }
-
-    .research-note {
-      position: relative;
-      padding: 28px 32px;
-      overflow: hidden;
-      background: var(--blue-pale);
-      border-radius: 14px;
-    }
-
-    .research-note h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.35rem; }
-    .research-note p { margin: 0; color: var(--muted); }
-
-    .timeline { position: relative; display: grid; gap: 28px; }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      top: 6px;
-      bottom: 6px;
-      left: 4px;
-      width: 1px;
-      background: var(--line);
-    }
-
-    .timeline-item { position: relative; padding-left: 32px; }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      top: .55em;
-      left: 0;
-      width: 9px;
-      height: 9px;
-      background: var(--navy);
-      border: 3px solid var(--canvas);
-      border-radius: 50%;
-    }
-
-    .timeline-meta {
-      margin: 0 0 4px;
-      color: var(--link-blue);
-      font-size: .82rem;
-      font-weight: 600;
-    }
-
-    .timeline-item h3 { margin: 0; color: var(--navy); font-size: 1.18rem; font-weight: 500; }
-    .timeline-item p { margin: 2px 0 0; color: var(--muted); }
-
-    .cv-card {
-      padding: clamp(26px, 5vw, 40px);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: center;
-      color: var(--ink);
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-
-    .cv-card h3 { margin: 0 0 7px; font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 500; }
-    .cv-card p { margin: 0; color: var(--muted); }
-    .cv-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
-
-    .cv-preview {
-      margin-top: 16px;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .cv-preview summary { padding: 13px 17px; color: var(--navy); font-weight: 600; cursor: pointer; }
-    .cv-preview iframe { display: block; width: 100%; height: 700px; border: 0; border-top: 1px solid var(--line); }
-
-    .site-footer { color: var(--muted); background: var(--paper); border-top: 1px solid var(--line); }
-    .footer-inner {
-      padding-block: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      font-size: .85rem;
-    }
-    .footer-inner p { margin: 0; }
-    .socials { display: flex; gap: 18px; }
-    .socials a { color: var(--link-blue); text-decoration: none; }
-
-    @media (max-width: 820px) {
-      .hero-inner { min-height: auto; grid-template-columns: 1fr; gap: 54px; padding-block: 62px 72px; }
-      .portrait { justify-self: start; width: min(72vw, 278px); }
-      .section { padding-block: 66px; }
-      .section-grid { grid-template-columns: 1fr; gap: 30px; }
-      .interest-list { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 600px) {
-      :root { --header-height: 66px; }
-      .header-inner, .hero-inner, .content, .footer-inner { width: min(calc(100% - 32px), var(--content-width)); }
-      .menu-label-text { display: none; }
-      .menu-panel { left: 16px; width: calc(100vw - 32px); }
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr) 104px;
-        grid-template-rows: auto auto auto;
-        gap: 16px 14px;
-        padding-block: 44px 52px;
+    @media (max-width: 860px) {
+      .theme-toggle {
+        position: absolute;
+        top: 18px;
+        right: 18px;
       }
-      .hero-inner > div:first-child { display: contents; }
-      h1 {
-        grid-column: 1;
-        grid-row: 1;
-        align-self: center;
-        font-size: clamp(2.15rem, 10vw, 2.8rem);
+
+      .page-shell {
+        width: min(calc(100% - 36px), 680px);
+        padding: 66px 0 48px;
+        display: block;
       }
-      .portrait {
-        grid-column: 2;
-        grid-row: 1;
-        align-self: center;
-        width: 104px;
-        aspect-ratio: 1;
-        padding: 4px;
-        border-radius: 50%;
-        box-shadow: 0 8px 20px rgba(10,31,55,.12);
-      }
-      .portrait-fallback { inset: 4px; border-radius: 50%; font-size: 2rem; }
-      .profile-photo { border-radius: 50%; object-position: center 24%; }
-      .hero-subtitle {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        margin-top: 8px;
-      }
-      .hero-contact {
-        grid-column: 1 / -1;
-        grid-row: 3;
+
+      .profile {
+        position: static;
         display: grid;
-        margin-top: 4px;
+        grid-template-columns: 1fr;
+        gap: 22px;
+        align-items: start;
+        padding-bottom: 42px;
+        padding-right: 0;
+        margin-bottom: 46px;
+        border-bottom: 1px solid var(--line);
       }
-      .contact-link { overflow-wrap: anywhere; }
-      .facts, .cv-card { grid-template-columns: 1fr; }
-      .cv-actions { justify-content: flex-start; }
-      .cv-actions .button { flex: 1 1 130px; }
-      .cv-preview iframe { height: 480px; }
-      .footer-inner { align-items: flex-start; flex-direction: column; }
+
+      .portrait {
+        width: 120px;
+        margin: 0;
+      }
+
+      .contact-list {
+        gap: 13px;
+        margin: 0;
+        padding: 0;
+        border-top: 0;
+      }
+
+      .section {
+        padding-bottom: 44px;
+        margin-bottom: 42px;
+      }
+
+      main { min-height: 0; padding-left: 0; border-left: 0; }
+    }
+
+    @media (max-width: 470px) {
+      .profile { grid-template-columns: 1fr; gap: 16px; }
+      .portrait { width: 96px; }
+      .contact-link { font-size: .8rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -626,143 +359,64 @@
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
-        <span class="menu-icon" aria-hidden="true"><span></span></span>
-        <span class="menu-label-text">Menu</span>
-      </button>
-      <a class="wordmark" href="#top" aria-label="Riccardo Biscotto, home">Riccardo Biscotto</a>
-      <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M20.4 15.5A8.5 8.5 0 0 1 8.5 3.6 8.5 8.5 0 1 0 20.4 15.5Z"/>
-        </svg>
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <circle cx="12" cy="12" r="4"/>
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
-        </svg>
-      </button>
-    </div>
-  </header>
+  <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <path d="M20.4 15.5A8.5 8.5 0 0 1 8.5 3.6 8.5 8.5 0 1 0 20.4 15.5Z"/>
+    </svg>
+    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"/>
+    </svg>
+  </button>
 
-  <div class="backdrop" aria-hidden="true"></div>
-  <aside class="menu-panel" id="site-menu" aria-label="Site navigation" aria-hidden="true">
-    <nav class="menu-nav">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#cv">Curriculum Vitae</a>
-    </nav>
-  </aside>
-
-  <main id="main">
-    <section class="hero" id="top" aria-labelledby="page-title">
-      <div class="hero-inner">
-        <div>
-          <h1 id="page-title">Riccardo<br>Biscotto</h1>
-          <p class="hero-subtitle"><strong>PhD Student in Economics and Finance</strong><br>Bocconi University</p>
-          <div class="hero-contact" aria-label="Contact links">
-            <a class="contact-link" href="https://www.linkedin.com/in/riccardobiscotto/" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/>
-              </svg>
-              LinkedIn
-            </a>
-            <a class="contact-link" href="mailto:riccardo.biscotto@phd.unibocconi.it">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <rect x="3" y="5" width="18" height="14" rx="2"/>
-                <path d="m4 7 8 6 8-6"/>
-              </svg>
-              riccardo.biscotto@phd.unibocconi.it
-            </a>
-          </div>
-        </div>
-
-        <div class="portrait">
-          <span class="portrait-fallback" aria-hidden="true">RB</span>
-          <img class="profile-photo" src="Riccardo_Biscotto_picture.jpg" alt="Portrait of Riccardo Biscotto" width="1000" height="1250" loading="eager" decoding="sync" onerror="this.hidden=true">
-        </div>
+  <div class="page-shell">
+    <aside class="profile" aria-label="Academic profile">
+      <div class="portrait">
+        <span class="portrait-fallback" aria-hidden="true">RB</span>
+        <img class="profile-photo" src="Riccardo_Biscotto_picture.jpg" alt="Portrait of Riccardo Biscotto" width="1000" height="1250" loading="eager" decoding="async" onerror="this.hidden=true">
       </div>
-    </section>
 
-    <div class="content">
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div class="section-grid">
-          <h2 class="section-title" id="about-title">About</h2>
-          <div class="prose">
-            <p>I am a PhD Student in Economics and Finance at Bocconi University, enrolled in the Finance curriculum with a major in Accounting.</p>
-            <p>I hold a Master's degree in Accounting, Financial Management and Control from Bocconi University, and a Bachelor's degree in Banking and Finance from the University of Milano-Bicocca.</p>
-            <p>Outside academia, I am deeply passionate about marine life, travel, and history.</p>
-          </div>
+      <div class="contact-list" aria-label="Contact details">
+        <div class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/>
+            <circle cx="12" cy="10" r="2.5"/>
+          </svg>
+          <span>Bocconi University</span>
         </div>
-      </section>
 
-      <section class="section" id="research" aria-labelledby="research-title">
-        <div class="section-grid">
-          <h2 class="section-title" id="research-title">Research</h2>
-          <div>
-            <div class="prose research-interests">
-              <p>My research interests primarily lie in Corporate Reporting, Capital Market Outcomes, and Financial Markets.</p>
-            </div>
-            <div class="research-note">
-              <p>I look forward to sharing my first research projects here!</p>
-            </div>
-          </div>
-        </div>
-      </section>
+        <a class="contact-link" href="mailto:riccardo.biscotto@phd.unibocconi.it">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="m4 7 8 6 8-6"/>
+          </svg>
+          <span>riccardo.biscotto@phd.unibocconi.it</span>
+        </a>
 
-      <section class="section" id="cv" aria-labelledby="cv-title">
-        <div class="section-grid">
-          <h2 class="section-title" id="cv-title">CV</h2>
-          <div>
-            <div class="cv-card">
-              <p>You can view or download my CV here.</p>
-              <div class="cv-actions">
-                <a class="button primary" href="CV_Riccardo_Biscotto.pdf" target="_blank" rel="noopener noreferrer">View CV <span aria-hidden="true">↗</span></a>
-                <a class="button" href="CV_Riccardo_Biscotto.pdf" download>Download CV <span aria-hidden="true">↓</span></a>
-              </div>
-            </div>
-            <div class="cv-preview">
-              <iframe src="CV_Riccardo_Biscotto.pdf" title="Riccardo Biscotto's curriculum vitae"></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
-  </main>
+        <a class="contact-link" href="https://www.linkedin.com/in/riccardobiscotto/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45C23.2 24 24 23.23 24 22.27V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </aside>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <p>© <span id="year">2026</span> Riccardo Biscotto</p>
-    </div>
-  </footer>
+    <main id="main">
+      <h1 class="welcome-title">Welcome to my page!</h1>
+      <div class="prose">
+        <p>I am a PhD Student in Economics and Finance, enrolled in the Finance Curriculum with a Major in Accounting.<br>
+        My research interests primarily lie in Corporate Reporting, Capital Market Outcomes, and Financial Markets.</p>
+        <p>Outside academia, I am deeply passionate about marine life, travel, and history.</p>
+        <p>Looking forward to sharing my first research projects here!</p>
+      </div>
+
+    </main>
+  </div>
 
   <script>
     (() => {
-      const toggle = document.querySelector(".menu-toggle");
-      const panel = document.querySelector(".menu-panel");
-      const backdrop = document.querySelector(".backdrop");
-      const links = panel.querySelectorAll("a");
       const themeToggle = document.querySelector(".theme-toggle");
-
-      function setMenu(open, returnFocus = false) {
-        toggle.setAttribute("aria-expanded", String(open));
-        panel.setAttribute("aria-hidden", String(!open));
-        panel.classList.toggle("open", open);
-        backdrop.classList.toggle("open", open);
-        if (open) links[0].focus();
-        if (!open && returnFocus) toggle.focus();
-      }
-
-      toggle.addEventListener("click", () => {
-        setMenu(toggle.getAttribute("aria-expanded") !== "true");
-      });
-      backdrop.addEventListener("click", () => setMenu(false));
-      links.forEach(link => link.addEventListener("click", () => setMenu(false)));
-      document.addEventListener("keydown", event => {
-        if (event.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-          setMenu(false, true);
-        }
-      });
 
       function updateThemeControl() {
         const dark = document.documentElement.dataset.theme === "dark";
@@ -770,18 +424,17 @@
         themeToggle.setAttribute("aria-label", label);
         themeToggle.setAttribute("aria-pressed", String(dark));
         themeToggle.title = label;
+        document.querySelector('meta[name="theme-color"]').content = dark ? "#11171d" : "#ffffff";
       }
 
       themeToggle.addEventListener("click", () => {
-        const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = nextTheme;
-        try { localStorage.setItem("theme", nextTheme); } catch (_) {}
-        document.querySelector('meta[name="theme-color"]').content = nextTheme === "dark" ? "#071728" : "#0a1f37";
+        const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = next;
+        try { localStorage.setItem("theme", next); } catch (_) {}
         updateThemeControl();
       });
 
       updateThemeControl();
-      document.getElementById("year").textContent = new Date().getFullYear();
     })();
   </script>
 </body>
