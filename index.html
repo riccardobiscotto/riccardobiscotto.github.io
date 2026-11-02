@@ -176,6 +176,15 @@
       object-position: center 24%;
     }
 
+    .profile-caption {
+      margin: 0;
+      color: var(--heading);
+      line-height: 1.5;
+    }
+
+    .profile-caption strong { font-weight: 700; }
+    .profile-caption em { color: var(--muted); font-size: .93rem; }
+
     .contact-list {
       display: grid;
       gap: 12px;
@@ -375,6 +384,8 @@
         <span class="portrait-fallback" aria-hidden="true">RB</span>
         <img class="profile-photo" src="Riccardo_Biscotto_picture.jpg" alt="Portrait of Riccardo Biscotto" width="1000" height="1250" loading="eager" decoding="async" onerror="this.hidden=true">
       </div>
+
+      <p class="profile-caption"><strong>Riccardo Biscotto</strong><br><em>PhD Student</em></p>
 
       <div class="contact-list" aria-label="Contact details">
         <div class="contact-link">
